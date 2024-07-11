@@ -5,10 +5,16 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class PersistenceUtility {
+    static EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProRidePersistenceUnit");
 
     public static EntityManager getEntityManager(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProRidePersistenceUnit");
         EntityManager em = factory.createEntityManager();
         return em;
     }
+
+    public static void cleanUp() {
+       factory.close();
+    }
+
+
 }

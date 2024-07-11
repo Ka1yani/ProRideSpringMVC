@@ -1,19 +1,16 @@
 package model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "Driver")
 @PrimaryKeyJoinColumn(name = "driver_id")
 public class Driver extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "driver_id")
-    private int driverId;
-
     @OneToMany
     private Set<Ride> rides = new HashSet<>();
 

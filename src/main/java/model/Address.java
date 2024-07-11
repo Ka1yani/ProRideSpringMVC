@@ -1,10 +1,13 @@
 package model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "Address")
 public class Address {
@@ -21,10 +24,10 @@ public class Address {
     @JoinColumn(name = "driver_id")
     private Driver driver;
 
-    @OneToMany(mappedBy = "pickupLocation")
+    @OneToMany(mappedBy = "pickupLocationId")
     private Set<Ride> pickupRides;
 
-    @OneToMany(mappedBy = "dropOffLocation")
+    @OneToMany(mappedBy = "dropOffLocationId")
     private Set<Ride> dropOffRides;
 
     @Column(name = "address_line_1")

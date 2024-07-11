@@ -1,11 +1,14 @@
 package model;
 
 import jakarta.persistence.*;
-
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "User")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -17,11 +20,11 @@ public class User {
         @OneToMany(mappedBy = "user")
         private Set<Address> addresses = new HashSet<>();
 
-        @OneToMany(mappedBy = "user")
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
         private Set<Payment> payments = new HashSet<>();
 
         @OneToMany(mappedBy = "user")
-        private Set<Ride> rides;
+        private Set<Ride> rides = new HashSet<>();
 
         @Column(name = "name")
         private String name;
@@ -35,9 +38,24 @@ public class User {
         @Column(name = "password")
         private String password;
 
-        @Column(name = "profile_picture")
-        private String profilePicture;
-
         @Column(name = "registration_date")
         private LocalDateTime registrationDate;
+
+        public void addPayment(Payment payment) {
+                payment.setUser(this);
+                payments.add(payment);
+        }
+
+        public void removePayment(Payment payment) {
+                payments.remove(payment);
+                payment.setUser(null);
+        }
+
+        public User(String name, String email, String phoneNumber, String password, LocalDateTime registrationDate) {
+                this.name = name;
+                this.email = email;
+                this.phoneNumber = phoneNumber;
+                this.password = password;
+                this.registrationDate = registrationDate;
+        }
 }
