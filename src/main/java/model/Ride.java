@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-enum RideStatus {REQUESTED, ACCEPTED, ONGOING, COMPLETED, CANCELLED}
-
 @Data
 @Entity
 @Table(name = "Ride")
