@@ -2,6 +2,7 @@ package repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import model.User;
 import repository.interfaces.UserRepo;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 public class UserRepoImpl implements UserRepo {
 
-    private final EntityManager entityManager = PersistenceUtility.getEntityManager();
+    private final static EntityManager entityManager = PersistenceUtility.getEntityManager();
 
     @Override
     public void save(User user) {
@@ -47,20 +48,6 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public void deleteByID(long userId) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        try {
-            entityTransaction.begin();
-            entityManager.remove(userId);
-            entityTransaction.commit();
-        } catch (Exception e) {
-            rollback(entityTransaction);
-            e.printStackTrace();
-            throw e;
-        }
-    }
-
-    @Override
     public void delete(User user) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
@@ -72,6 +59,12 @@ public class UserRepoImpl implements UserRepo {
             e.printStackTrace();
             throw e;
         }
+    }
+
+    @Override
+    public void deactivateUser(User user) {
+        user.setIsActive(false);
+        this.update(user);
     }
 
     @Override
@@ -107,9 +100,14 @@ public class UserRepoImpl implements UserRepo {
     }
 
     public void update(User user) {
-        entityManager.getTransaction().begin();
-        entityManager.merge(user);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     private void rollback(EntityTransaction entityTransaction) {
@@ -117,4 +115,20 @@ public class UserRepoImpl implements UserRepo {
             entityTransaction.rollback();
         }
     }
+
+    /*@Override
+    public void deleteByID(long userId) {
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+            Query deleteByIdQuery = entityManager.createQuery("DELETE FROM User u WHERE u.userId = :userId");
+            deleteByIdQuery.setParameter("userId",userId);
+            deleteByIdQuery.executeUpdate();
+            entityTransaction.commit();
+        } catch (Exception e) {
+            rollback(entityTransaction);
+            e.printStackTrace();
+            throw e;
+        }
+    }*/
 }

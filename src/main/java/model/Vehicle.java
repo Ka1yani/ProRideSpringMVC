@@ -38,4 +38,7 @@ public class Vehicle {
     @Column(name = "capacity")
     private int capacity;
 
+    @Column(name = "is_active")
+    private Boolean isActive = true;
+
 }

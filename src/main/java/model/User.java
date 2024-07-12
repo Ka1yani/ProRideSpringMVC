@@ -41,6 +41,9 @@ public class User {
         @Column(name = "registration_date")
         private LocalDateTime registrationDate;
 
+        @Column(name = "is_active")
+        private Boolean isActive = true;
+
         public void addPayment(Payment payment) {
                 payment.setUser(this);
                 payments.add(payment);

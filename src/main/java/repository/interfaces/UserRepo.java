@@ -10,7 +10,7 @@ public interface UserRepo {
     Optional<User> findByID(long userId);
     User findByPhoneNo(String phoneNo);
     List<User> findAll();
-    void deleteByID(long userId);
+    //void deleteByID(long userId);
     void delete(User user);
     List<User> findByName(String name);
     boolean existsByPhoneNo(String phoneNo);
@@ -18,5 +18,7 @@ public interface UserRepo {
     boolean updateEmailById(int userId, String email);
 
     void update(User user);
+
+    void deactivateUser(User user);
 
 }
