@@ -1,5 +1,6 @@
 <html>
 <body>
-<h1>Welcome to ProRide!</h1>
+<%--<%@ include file="WEB-INF/views/home.html" %>--%>
+ProRide!
 </body>
 </html>
