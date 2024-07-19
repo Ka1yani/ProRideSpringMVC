@@ -1,6 +1,9 @@
 package com.kalyani.proride.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
@@ -32,9 +35,12 @@ public class User {
         @Column(name = "email")
         private String email;
 
+        @Size(min = 10, max = 10)
         @Column(name = "phone_number")
         private String phoneNumber;
 
+        @Size(min = 8)
+        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$")
         @Column(name = "password")
         private String password;
 

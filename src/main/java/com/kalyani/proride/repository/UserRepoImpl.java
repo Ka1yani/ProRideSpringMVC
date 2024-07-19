@@ -15,8 +15,7 @@ import java.util.Optional;
 @Component
 public class UserRepoImpl implements UserRepo {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    private final EntityManager entityManager =  PersistenceUtility.getEntityManager();
 
     @Override
     public void save(User user) {

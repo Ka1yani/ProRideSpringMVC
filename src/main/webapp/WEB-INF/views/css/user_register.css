@@ -1,0 +1,211 @@
+/* styles.css */
+/* Reset some default styles */
+body, h1, h2, h3, h4, h5, h6, p, ul, li, a, header, footer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    color: #0c0c0c;
+    background-color: #ffffff;
+}
+
+/* Header styles */
+header {
+    background-color: #000000;
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+header .logo {
+    color: #fefdfc;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li a {
+    color: #fefdfc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header nav ul li a.signup-btn {
+    background-color: #a7c464;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fefdfc;
+    cursor: pointer;
+}
+
+/* Hero section styles */
+.hero {
+    background-image: url('https://source.unsplash.com/1600x900/?city,car');
+    background-size: cover;
+    background-position: center;
+    color: #fefdfc;
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.hero .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero .cta-buttons a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: 500;
+    margin: 0.5rem;
+}
+
+.hero .cta-buttons .btn-primary {
+    background-color: #a7c464;
+    color: #fefdfc;
+}
+
+.hero .cta-buttons .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000000;
+}
+
+/* Footer styles */
+footer {
+    background-color: #000000;
+    color: #fefdfc;
+    padding: 2rem 0;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+footer .footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+footer .column {
+    flex: 1;
+    min-width: 200px;
+}
+
+footer .column h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+footer .column ul {
+    list-style: none;
+}
+
+footer .column ul li a {
+    color: #fefdfc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #a7c464;
+    color: #fefdfc;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #8eb04c;
+}
+
+
+#reg {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative; /* Added */
+    min-height: calc(100vh - 300px); /* Added */ /* Adjust the height as needed */
+}
+
+/* Footer styles */
+footer {
+    background-color: #000000;
+    color: #fefdfc;
+    padding: 2rem 0;
+    position: fixed; /* Added */
+    bottom: 0; /* Added */
+    left: 0; /* Added */
+    right: 0; /* Added */
+    width: 100%; /* Added */
+}
+
+/* Make sure the footer stays at the bottom even if the content is short */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1; /* Added */
+}

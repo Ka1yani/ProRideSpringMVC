@@ -1,22 +1,17 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration - ProRide</title>
-    <link rel="stylesheet" type="text/css" href="/views/styles.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/user_register.css'/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Add additional styles here if needed */
-    </style>
 </head>
 <body>
 <header>
@@ -24,79 +19,52 @@
         <div class="logo">ProRide</div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Ride</a></li>
-                <li><a href="#">Drive</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Login</a></li>
-                <li><span id="signupBtn" class="signup-btn">Sign Up</span></li>
+                <li><a href="<c:url value='/'/>">Home</a></li>
+                <li><a href="<c:url value='/login'/>">Login</a></li>
+                <li><a href="<c:url value='/register'/>" class="signup-btn">Sign Up</a></li>
             </ul>
         </nav>
     </div>
 </header>
-<section>
-    <div class="container">
-        <h2>User Registration</h2>
-        <form action="registerUser" method="post">
-            <label for="firstName">First Name:</label><br>
-            <input type="text" id="firstName" name="firstName" required><br><br>
 
-            <label for="lastName">Last Name:</label><br>
-            <input type="text" id="lastName" name="lastName" required><br><br>
+<div id="reg">
+    <h1>User Registration</h1>
+    <c:url var="post_url" value="/user/register"/>
+    <form:form method="post"
+               action="${post_url}"
+               modelAttribute="user">
+        <div class="form-group">
+            <label for="phoneNumber">Mobile Number:</label>
+            <form:input path="phoneNumber" id="phoneNumber" class="form-control" required="true" pattern=".{10}"
+                        title="Mobile Number must be 10 characters long"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <form:password path="password" id="password" class="form-control" required="true"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                           title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">SignUp</button>
+        </div>
+    </form:form>
+</div>
 
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
-
-            <label for="phone">Phone Number:</label><br>
-            <input type="text" id="phone" name="phone" required><br><br>
-
-            <label for="dob">Date of Birth:</label><br>
-            <input type="date" id="dob" name="dob" required><br><br>
-
-            <label for="address">Address:</label><br>
-            <textarea id="address" name="address" rows="4" required></textarea><br><br>
-
-            <label for="licenseNumber">Driver's License Number:</label><br>
-            <input type="text" id="licenseNumber" name="licenseNumber"><br><br>
-
-            <label for="carModel">Car Model:</label><br>
-            <input type="text" id="carModel" name="carModel"><br><br>
-
-            <input type="submit" value="Register">
-        </form>
-    </div>
-</section>
 <footer>
     <div class="container">
         <div class="footer-columns">
             <div class="column">
-                <h4>Company</h4>
+                <h4>About ProRide</h4>
                 <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Press</a></li>
-                </ul>
-            </div>
-            <div class="column">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#">Ride</a></li>
-                    <li><a href="#">Drive</a></li>
-                    <li><a href="#">Business</a></li>
-                    <li><a href="#">Freight</a></li>
+                    <li><a href="<c:url value='/about'/>">About Us</a></li>
+                    <li><a href="<c:url value='/contact'/>">Contact Us</a></li>
                 </ul>
             </div>
             <div class="column">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Safety</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                    <li><a href="#">Community Guidelines</a></li>
+                    <li><a href="<c:url value='/faq'/>">FAQ</a></li>
+                    <li><a href="<c:url value='/support'/>">Support</a></li>
                 </ul>
             </div>
         </div>

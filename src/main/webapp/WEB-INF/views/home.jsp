@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProRide - Home</title>
-    <link rel="stylesheet" type="text/css" href="/views/styles.css">
+    <link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -290,11 +292,11 @@
     });
 
     document.getElementById('userBtn').addEventListener('click', function() {
-        window.location.href = '/ProRideSpringMVC_war/registerUser';
+        window.location.href = '/ProRideSpringMVC_war/user/register';
     });
 
     document.getElementById('driverBtn').addEventListener('click', function() {
-        window.location.href = 'driver_register.jsp';
+        window.location.href = '/ProRideSpringMVC_war/driver/register';
     });
 
     // Close the modal if the user clicks outside of it

@@ -1,6 +1,5 @@
 <html>
 <body>
-<%--<%@ include file="WEB-INF/views/home.html" %>--%>
-ProRide!
+<%@ include file="WEB-INF/views/home.jsp" %>
 </body>
 </html>

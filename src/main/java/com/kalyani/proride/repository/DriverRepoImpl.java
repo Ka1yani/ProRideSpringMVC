@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class DriverRepoImpl implements DriverRepo {
-    private final EntityManager entityManager = PersistenceUtility.getEntityManager();
+    private EntityManager entityManager;
 
     @Override
     public void save(Driver driver) {

@@ -29,8 +29,4 @@ public class DriverController {
         String today= new Date().toString();
         return new ModelAndView("hello", "todaysDate", today);
     }
-
-   /* public static void main(String[] args) {
-        new DriverController().registerDriver();
-    }*/
 }
