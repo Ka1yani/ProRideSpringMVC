@@ -11,6 +11,7 @@ import java.util.Set;
 @Table(name = "Driver")
 @PrimaryKeyJoinColumn(name = "driver_id")
 public class Driver extends User {
+    private static final long serialVersionUID = 1L;
     @OneToMany
     private Set<Ride> rides = new HashSet<>();
 

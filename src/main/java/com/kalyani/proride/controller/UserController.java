@@ -32,7 +32,6 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    @Transactional
     public String registerUser(@ModelAttribute("user") User user) {
         logger.info("in User Registration post api");
         userServiceImpl.registerUser(user);

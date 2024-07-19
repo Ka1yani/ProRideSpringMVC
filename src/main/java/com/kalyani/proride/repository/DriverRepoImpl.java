@@ -8,12 +8,15 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import com.kalyani.proride.repository.interfaces.DriverRepo;
+import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class DriverRepoImpl implements DriverRepo {
-    private EntityManager entityManager;
+    private EntityManager entityManager = PersistenceUtility.getEntityManager();
 
     @Override
     public void save(Driver driver) {
@@ -28,6 +31,7 @@ public class DriverRepoImpl implements DriverRepo {
             throw e;
         }
     }
+
 
     @Override
     public Optional<Driver> findByID(int driverId) {

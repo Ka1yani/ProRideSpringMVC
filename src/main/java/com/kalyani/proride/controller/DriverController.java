@@ -1,11 +1,13 @@
 package com.kalyani.proride.controller;
 
+import com.kalyani.proride.model.Driver;
+import com.kalyani.proride.service.DriverServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -14,13 +16,23 @@ import java.util.Date;
 @RequestMapping("/driver")
 public class DriverController {
 
+    @Autowired
+    private DriverServiceImpl driverServiceImpl;
+
     private static final Logger logger = LoggerFactory.getLogger(DriverController.class);
 
-    @GetMapping("/registerDriver")
-    @ResponseBody
-    public String registerDriver() {
+    @GetMapping("/register")
+    public String showUserRegistrationForm(Model model) {
         logger.info("Accessing registerDriver endpoint");
-        return "Driver Registration Page";
+        return "driver_register";
+    }
+
+    @PostMapping("/register")
+    public String registerDriver(@ModelAttribute Driver driver) {
+        logger.info("in Driver Registration post api");
+        driverServiceImpl.registerDriver(driver);
+        return "home";
+
     }
 
     @RequestMapping("/hello")

@@ -70,7 +70,7 @@
             background-image: url('https://source.unsplash.com/1600x900/?city,car');
             background-size: cover;
             background-position: center;
-            color: #fefdfc;
+            color: #020202;
             text-align: center;
             padding: 6rem 0;
         }
@@ -212,6 +212,14 @@
             cursor: pointer;
         }
 
+        #msg{
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* Added */
+            min-height: calc(100vh - 300px); /* Added */ /* Adjust the height as needed */
+        }
+
+
     </style>
 </head>
 <body>
@@ -230,7 +238,7 @@
         </nav>
     </div>
 </header>
-<section class="hero">
+<section id="msg" class="hero">
     <div class="container">
         <h1>Get there. Your day belongs to you.</h1>
         <p>Book a ride now or schedule one for later.</p>
