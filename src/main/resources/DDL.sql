@@ -245,3 +245,5 @@ CREATE TABLE Trip (
     FOREIGN KEY (trip_id) REFERENCES Ride(ride_id),
     FOREIGN KEY (package_id) REFERENCES Package(package_id)
 );
+
+
